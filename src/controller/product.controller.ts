@@ -18,7 +18,10 @@ export async function createProductHandler(
 
   const body = req.body;
 
-  const product = await createProduct({ ...body, user: userId });
+  const product = await createProduct({
+    ...body,
+    user: userId,
+  });
 
   return res.send(product);
 }

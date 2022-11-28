@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
-import config from "config";
+import dotenv from "dotenv";
 import logger from "./logger";
 
+dotenv.config({ path: `${__dirname}/config.env` });
+
 async function connect() {
-  const dbUri = config.get<string>("dbUri");
+  const dbUri = `${process.env.DB_URI}`;
 
   try {
     await mongoose.connect(dbUri);

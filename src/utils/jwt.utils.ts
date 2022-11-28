@@ -1,10 +1,13 @@
 import jwt from "jsonwebtoken";
-import config from "config";
+import dotenv from "dotenv";
 
-const privateKey = config.get<string>("privateKey");
-const publicKey = config.get<string>("publicKey");
+dotenv.config({ path: "./config.env" });
+
+const privateKey = `${process.env.PRIVATE_KEY}`;
+const publicKey = `${process.env.PUBLIC_KEY}`;
 
 export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
+  console.log(privateKey);
   return jwt.sign(object, privateKey, {
     ...(options && options),
     algorithm: "RS256",
@@ -14,6 +17,7 @@ export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
 export function verifyJwt(token: string) {
   try {
     const decoded = jwt.verify(token, publicKey);
+
     return {
       valid: true,
       expired: false,
