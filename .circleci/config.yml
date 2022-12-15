@@ -12,6 +12,9 @@ jobs:
           name: Convert private key to RSA
           command: |
             ssh-keygen -t rsa -b 4096 -f $PRIVATE_KEY &&
+      - run:
+          name: Convert private key to RSA
+          command: |
             ssh-keygen -t rsa -b 4096 -f $PUBLIC_KEY
 
       # Install TypeScript
