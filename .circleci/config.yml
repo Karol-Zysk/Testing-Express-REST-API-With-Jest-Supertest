@@ -11,9 +11,9 @@ jobs:
       - run:
           name: Convert private key to RSA
           command: |
-            ssh-keygen -t rsa -b 4096 -f $PRIVATE_KEY &&
+            ssh-keygen -t rsa -b 4096 -f $PRIVATE_KEY
       - run:
-          name: Convert private key to RSA
+          name: Convert PUBLIC key to RSA
           command: |
             ssh-keygen -t rsa -b 4096 -f $PUBLIC_KEY
 
