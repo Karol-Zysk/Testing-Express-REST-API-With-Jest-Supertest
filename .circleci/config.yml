@@ -11,8 +11,8 @@ jobs:
       - run:
           name: Convert private key to RSA
           command: |
-            ssh-keygen -f $PRIVATE_KEY -m 'PEM' -t 'RSA' -q -N '' &&
-            ssh-keygen -f $PUBLIC_KEY -m 'PEM' -t 'RSA' -q -N ''
+            ssh-keygen -t rsa -b 4096 -f $PRIVATE_KEY &&
+            ssh-keygen -t rsa -b 4096 -f $PUBLIC_KEY
 
       # Install TypeScript
       - run: sudo npm install -g typescript
